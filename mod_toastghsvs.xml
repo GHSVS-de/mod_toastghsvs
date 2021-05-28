@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.9" client="site" method="upgrade">
+	<name>MOD_TOASTGHSVS</name>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer (GHSVS.de)</author>
+	<creationDate>2021-03-28</creationDate>
+	<copyright>Copyright (C) 2021, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (GHSVS.de). All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<authorUrl>https://www.ghsvs.de</authorUrl>
+	<version>2021.03.28</version>
+ <versionHistory>
+</versionHistory>
+	<description>MOD_TOASTGHSVS_XML_DESCRIPTION</description>
+<!--<updateservers><server type="extension" priority="1" name="MOD_CUSTOM_BLANKGHSVS"></server></updateservers>-->
+
+	<files>
+		<filename module="mod_toastghsvs">mod_toastghsvs.php</filename>
+		<filename>LICENSE.txt</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+
+	<config>
+		<fieldset name="inhalt" label="Content">
+			<field name="content" type="textarea" filter="safehtml"
+				class="extended-width" label="Text (HTML und Sprachstrings erlaubt)" />
+		</fieldset>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="headline" type="text" filter="safehtml"
+					class="extended-width" label="Titel/Überschrift der Meldung" />
+
+				<field name="farbe" type="list" filter="string"
+					label="Farbe der Meldung"
+					default=""
+					>
+					<option value="">neutral</option>
+					<option value="text-white bg-primary">JNO</option>
+				</field>
+
+				<field name="hideIntervalSpacer" type="note"
+				class="alert alert-info"
+				label="Erneut anzeigen nach x Stunden"
+				description="[hideInterval] Wenn ein Besucher die Meldung wegklickt, wird sie für diese Zeitdauer nicht erneut angezeigt. 0 = Immer anzeigen. Max. 2160 = 90 Tage"/>
+
+				<field type="number" name="hideInterval" min="0" max="2160" default="0"
+					label="Erneut anzeigen nach x Stunden"
+				/>
+
+				<field name="prepare_contentSpacer" type="note"
+					class="alert alert-info"
+					label="MOD_TOASTGHSVS_FIELD_PREPARE_CONTENT_LABEL"
+					description="JA bspw. dann, wenn der Inhalt Platzhalter enthält, die durch Plugins ersetzt werden sollen. Enthält der Inhalt eine Email, ist JA dringend empfohlen. Dadurch wird die Email 'gecloakt' (Schutz vor Spam-Bots)."/>
+
+				<field name="prepare_content" type="list" filter="integer"
+					label="MOD_TOASTGHSVS_FIELD_PREPARE_CONTENT_LABEL"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+					rows="3"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static"
+					>
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
