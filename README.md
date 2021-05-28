@@ -5,3 +5,4 @@
 - Displays a Bootstrap 5 toast in module position.
 - but doesn't load BS 5 CSS/JS for you. Just fires the toast init script in layout default.php.
 - You can set a time intervall (Cookie and Session based) when to display the toast again.
+- You can hide the toast for bots, search engines etc. but uses just a simple check like described here: https://ghsvs.de/programmierer-schnipsel/joomla/134-ist-der-gast-ein-robot
