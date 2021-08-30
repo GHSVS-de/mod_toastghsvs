@@ -1,4 +1,4 @@
-# mod_toastghsvs for Joomla 3
+# mod_toastghsvs for Joomla 3/Joomla 4
 
 ## DE
 - Mehr für mich und meine Projekte als für irgendjemand anderen. Der einfachste Weg, es out-of-the-box zu benutzen, ist, es nicht zu benutzen ;-)
