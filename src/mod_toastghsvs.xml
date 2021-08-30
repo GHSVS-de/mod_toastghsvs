@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.9" client="site" method="upgrade">
-	<name>MOD_TOASTGHSVS</name>
-	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer (GHSVS.de)</author>
-	<creationDate>2021-03-28</creationDate>
-	<copyright>Copyright (C) 2021, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (GHSVS.de). All rights reserved.</copyright>
-	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
-	<authorUrl>https://www.ghsvs.de</authorUrl>
-	<version>2021.05.28</version>
- <versionHistory>
-</versionHistory>
-	<description>MOD_TOASTGHSVS_XML_DESCRIPTION</description>
-<!--<updateservers><server type="extension" priority="1" name="MOD_CUSTOM_BLANKGHSVS"></server></updateservers>-->
+<extension type="{{type}}" client="{{client}}" method="upgrade">
+	<name>{{nameUpper}}</name>
+	<author>{{authorName}}</author>
+	<creationDate>{{creationDate}}</creationDate>
+	<copyright>{{copyright}}</copyright>
+	<license>{{licenseLong}}</license>
+	<authorUrl>{{authorUrl}}</authorUrl>
+	<version>{{version}}</version>
+	<description>{{nameUpper}}_XML_DESCRIPTION</description>
+
+	<updateservers><server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml</server></updateservers>
+
+	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml</changelogurl>
+
+	<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}</infourl>
+
+	<scriptfile>installerScript.php</scriptfile>
+	<minimumPhp>{{minimumPhp}}</minimumPhp>
+	<maximumPhp>{{maximumPhp}}</maximumPhp>
+	<minimumJoomla>{{minimumJoomla}}</minimumJoomla>
+	<maximumJoomla>{{maximumJoomla}}</maximumJoomla>
+	<allowDowngrades>{{allowDowngrades}}</allowDowngrades>
 
 	<files>
-		<filename module="mod_toastghsvs">mod_toastghsvs.php</filename>
+		<filename module="{{name}}">{{name}}.php</filename>
+		<filename>installerScript.php</filename>
 		<filename>LICENSE.txt</filename>
-		<folder>tmpl</folder>
 		<folder>language</folder>
+		<folder>tmpl</folder>
 	</files>
 
 	<config>
@@ -67,45 +78,24 @@
 					<option value="0">JNO</option>
 				</field>
 
-				<field
-					name="layout"
-					type="modulelayout"
+				<field name="layout" type="modulelayout" validate="moduleLayout"
 					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
-				/>
+					class="form-select"/>
 
-				<field
-					name="moduleclass_sfx"
-					type="textarea"
-					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
-					rows="3"
-				/>
+				<field name="moduleclass_sfx" type="textarea" filter="string"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"/>
 
-				<field
-					name="cache"
-					type="list"
-					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC"
-					default="1"
-					>
+				<field name="cache" type="list" default="1" filter="integer"
+					validate="options"
+					label="COM_MODULES_FIELD_CACHING_LABEL">
 					<option value="1">JGLOBAL_USE_GLOBAL</option>
 					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
 
-				<field
-					name="cache_time"
-					type="number"
-					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
-					default="900"
-				/>
+				<field name="cache_time" type="number" default="900" filter="integer"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL" />
 
-				<field
-					name="cachemode"
-					type="hidden"
-					default="static"
-					>
+				<field name="cachemode" type="hidden" default="static">
 					<option value="static"></option>
 				</field>
 			</fieldset>
