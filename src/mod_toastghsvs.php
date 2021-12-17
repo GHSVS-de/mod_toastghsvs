@@ -19,7 +19,7 @@ if ($params->get('prepare_content', 0))
 		'mod_custom.content');
 }
 
-$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT,
+$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx', ''), ENT_COMPAT,
 	'UTF-8');
 require ModuleHelper::getLayoutPath('mod_toastghsvs', $params->get('layout',
 	'default'));
