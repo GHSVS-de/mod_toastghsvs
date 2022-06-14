@@ -35,6 +35,7 @@
 			<field name="content" type="textarea" filter="safehtml"
 				class="extended-width" label="Text (HTML und Sprachstrings erlaubt)" />
 		</fieldset>
+
 		<fields name="params">
 			<fieldset name="advanced">
 				<field name="headline" type="text" filter="safehtml"
