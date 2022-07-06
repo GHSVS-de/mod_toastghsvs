@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="{{type}}" client="{{client}}" method="upgrade">
+<extension type="{{type}}" client="{{client}}" method="{{method}}">
 	<name>{{nameUpper}}</name>
 	<author>{{authorName}}</author>
 	<creationDate>{{creationDate}}</creationDate>
@@ -9,9 +9,9 @@
 	<version>{{version}}</version>
 	<description>{{nameUpper}}_XML_DESCRIPTION</description>
 
-	<updateservers><server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml</server></updateservers>
+	<updateservers><server type="extension" priority="1" name="{{nameUpper}}">{{xmlserver}}/{{name}}-update.xml</server></updateservers>
 
-	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml</changelogurl>
+	<changelogurl>{{xmlserver}}/{{name}}-changelog.xml</changelogurl>
 
 	<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}</infourl>
 
@@ -29,8 +29,8 @@
 		<folder>language</folder>
 		<folder>tmpl</folder>
 	</files>
-
-	<config>
+	{{namespace}}
+	<config{{addfieldprefix}}>
 		<fieldset name="inhalt" label="Content">
 			<field name="content" type="textarea" filter="safehtml"
 				class="extended-width" label="Text (HTML und Sprachstrings erlaubt)" />
