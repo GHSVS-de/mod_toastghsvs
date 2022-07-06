@@ -2,17 +2,27 @@
 	"name": "mod_toastghsvs",
 	"nameReal": "mod_toastghsvs",
 	"filename": "mod_toastghsvs",
-	"version": "2021.08.30",
-	"versionCompare": "2021.05.28",
+	"version": "2022.07.06",
+	"versionCompare": "2021.08.30",
 	"update": {
 		"type": "module",
 		"folder": "",
 		"client": "site",
 		"tag": "stable",
-		"targetplatform": ".*"
+		"targetplatform": [
+			"3.*",
+			"4.*"
+		],
+		"namespace": "",
+		"xmlserverComment": "Der Grundpfad zu update.xml etc. Falls abweichend vom Default in replaceXml.",
+		"xmlserver": ""
 	},
 	"releaseTxt": {
-		"title": "Joomla site module mod_toastGhsvs"
+		"title": "Joomla site module mod_toastGhsvs",
+		"requires": [
+			"Bootstrap 5 (Toast CSS, Toast JS)"
+		],
+		"uses": []
 	},
 	"changelog": {
 		"projecturl": "https://github.com/GHSVS-de/mod_toastghsvs",
@@ -21,9 +31,10 @@
 		"docsDE": "",
 		"docsEN": "",
 		"lastTests": [
-			"PHP8",
-			"J3.10",
-			"J4.0"
+			"PHP 8.0",
+			"PHP 8.1",
+			"Joomla 3.10",
+			"Joomla 4.1"
 		]
 	},
 	"minimumPhp": "7.3.0",
@@ -36,14 +47,12 @@
 	"copyright": "(C) 2021, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)",
 	"author": {
 		"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
-		"email": "",
-		"url": "https://www.ghsvs.de"
+		"url": "https://ghsvs.de"
 	},
 	"contributors": [
 		{
 			"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
-			"email": "",
-			"url": "https://www.ghsvs.de"
+			"url": "https://ghsvs.de"
 		}
 	],
 	"bugs": "https://github.com/GHSVS-de/mod_toastghsvs/issues",
@@ -62,17 +71,11 @@
 		"url": "https://github.com/GHSVS-de/mod_toastghsvs.git"
 	},
 	"scripts": {
-		"g-build": "node build.js",
-		"g-npm-update-check": "ncu",
-		"g-ncu-override-json": "ncu -u"
+		"build": "node build.js",
+    "updateCheck": "npm outdated",
+    "update": "npm update --save-dev"
 	},
-	"dependencies": {
-		"npm-check-updates": "^11.8.3"
-	},
-	"devDependencies": {
-		"adm-zip": "0.5.5",
-		"fs-extra": "10.0.0",
-		"rimraf": "3.0.2"
-	},
+	"dependencies": {},
+	"devDependencies": {},
 	"browserslist": []
 }
