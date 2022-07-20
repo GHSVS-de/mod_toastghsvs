@@ -2,8 +2,8 @@
 	"name": "mod_toastghsvs",
 	"nameReal": "mod_toastghsvs",
 	"filename": "mod_toastghsvs",
-	"version": "2022.07.06",
-	"versionCompare": "2021.08.30",
+	"version": "2022.07.20",
+	"versionCompare": "2022.07.06",
 	"update": {
 		"type": "module",
 		"folder": "",
@@ -34,7 +34,9 @@
 			"PHP 8.0",
 			"PHP 8.1",
 			"Joomla 3.10",
-			"Joomla 4.1"
+			"Joomla 4.1",
+			"Bootstrap 5.1",
+			"Bootstrap 5.2"
 		]
 	},
 	"minimumPhp": "7.3.0",
