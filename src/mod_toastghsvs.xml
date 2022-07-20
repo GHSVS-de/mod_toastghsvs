@@ -13,7 +13,7 @@
 
 	<changelogurl>{{xmlserver}}/{{name}}-changelog.xml</changelogurl>
 
-	<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}</infourl>
+	<infourl>{{infourl}}?file={{name}}</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>{{minimumPhp}}</minimumPhp>
@@ -34,7 +34,7 @@
 		<fieldset name="inhalt" label="Content">
 			<field name="content" type="textarea" filter="safehtml"
 				class="extended-width" label="Text (HTML und Sprachstrings erlaubt)" />
-		</fieldset>
+		</fieldset><!--/inhalt-->
 
 		<fields name="params">
 			<fieldset name="advanced">
@@ -69,6 +69,23 @@
 					>
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+				</field>
+
+				<field name="forcePositionSpacer" type="note"
+					label="MOD_TOASTGHSVS_FIELD_FORCEPOSITION"
+					description="MOD_TOASTGHSVS_FIELD_FORCEPOSITION_DESC"
+					class="alert alert-info"/>
+
+				<field name="forcePosition" type="list" filter="string"
+					label="MOD_TOASTGHSVS_FIELD_FORCEPOSITION"
+					default="position-relative"
+					>
+					<option value="0">JNONE</option>
+					<option value="position-relative">position-relative</option>
+					<option value="position-absolute">position-absolute</option>
+					<!--<option value="position-static">position-static</option>
+					<option value="position-fixed">position-fixed</option>
+					<option value="position-sticky">position-sticky</option>-->
 				</field>
 
 				<field name="robotsHide" type="list" filter="integer"

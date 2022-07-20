@@ -6,8 +6,11 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ModuleHelper;
 
+// Used also in default.php
+$app = Factory::getApplication();
+
 if ($params->get('robotsHide', 1) === 1
-	&& Factory::getApplication()->client->robot === true)
+	&& $app->client->robot === true)
 {
 	return;
 }

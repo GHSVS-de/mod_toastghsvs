@@ -4,6 +4,7 @@ use Joomla\CMS\Factory;
 use Joomla\Input\Cookie;
 use Joomla\CMS\Layout\LayoutHelper;
 
+$position = $params->get('forcePosition', 'position-relative');
 $hideInterval = (int) $params->get('hideInterval', 0);
 
 // 14 days 60 * 60 * 24 * 14
@@ -44,25 +45,34 @@ $cookie->set($node,
 	1,
 	$cookieOptions
 );
-
 ?>
-<div id="<?php echo $toastId; ?>" role="status" class="toast"
-	data-bs-autohide="false">
-  <div class="toast-header">
-		<strong class="me-auto"><?php echo $params->get('headline', ''); ?></strong>
-		<?php echo LayoutHelper::render('ghsvs.closeButtonTop',
-			array('options' => ['dismissType' => 'toast'])); ?>
-  </div>
-  <div class="toast-body">
-    <?php echo $module->content; ?>
-  </div>
+<div class="toast-container <?php echo $toastId; ?><?php echo $position ? ' ' . $position : ''; ?>">
+	<div id="<?php echo $toastId; ?>" role="status" class="toast"
+		data-bs-autohide="false">
+		<div class="toast-header">
+			<strong class="me-auto"><?php echo $params->get('headline', ''); ?></strong>
+			<?php echo LayoutHelper::render('ghsvs.closeButtonTop',
+				array('options' => ['dismissType' => 'toast'])); ?>
+		</div>
+		<div class="toast-body">
+			<?php echo $module->content; ?>
+		</div>
+	</div>
 </div>
 <?php
+$doc = $app->getDocument();
 $js = <<< JS
 document.addEventListener("DOMContentLoaded", function() {
 var $toastId = new bootstrap.Toast("#$toastId");
 $toastId.show();
 });
 JS;
+$doc->addScriptDeclaration($js);
 
-Factory::getApplication()->getDocument()->addScriptDeclaration($js);
+if ($position === 'position-relative')
+{
+	$css = <<< CSS
+.toast-container.$toastId{z-index:1 !important}
+CSS;
+	$doc->addStyleDeclaration($css);
+}
