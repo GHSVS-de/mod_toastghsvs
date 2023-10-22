@@ -2,18 +2,19 @@
 	"name": "mod_toastghsvs",
 	"nameReal": "mod_toastghsvs",
 	"filename": "mod_toastghsvs",
-	"version": "2022.07.20",
-	"versionCompare": "2022.07.06",
+	"version": "2023.10.22",
+	"versionCompare": "2022.07.20",
 	"update": {
+		"infourl": "https://github.com/GHSVS-de/mod_toastghsvs{{thisRelease}}",
 		"type": "module",
 		"folder": "",
 		"client": "site",
 		"tag": "stable",
 		"targetplatform": [
-			"3.*",
-			"4.*"
+			"4.[3456789]",
+			"5.*"
 		],
-		"namespace": "",
+		"namespace": "GHSVS\\Module\\ToastGhsvs",
 		"xmlserverComment": "Der Grundpfad zu update.xml etc. Falls abweichend vom Default in replaceXml.",
 		"xmlserver": ""
 	},
@@ -22,7 +23,8 @@
 		"requires": [
 			"Bootstrap 5 (Toast CSS, Toast JS)"
 		],
-		"uses": []
+		"uses": [],
+		"language": []
 	},
 	"changelog": {
 		"projecturl": "https://github.com/GHSVS-de/mod_toastghsvs",
@@ -31,18 +33,17 @@
 		"docsDE": "",
 		"docsEN": "",
 		"lastTests": [
-			"PHP 8.0",
-			"PHP 8.1",
-			"Joomla 3.10",
-			"Joomla 4.1",
-			"Bootstrap 5.1",
-			"Bootstrap 5.2"
+			"PHP 8.2",
+			"Joomla 4.4",
+			"Joomla 5.0",
+			"Bootstrap 5.2",
+			"Bootstrap 5.3"
 		]
 	},
 	"minimumPhp": "7.3.0",
-	"maximumPhp": "8.99999.99999",
-	"minimumJoomla": "3.9.24",
-	"maximumJoomla": "4.9999.9999",
+	"maximumPhp": "",
+	"minimumJoomla": "4.3.0",
+	"maximumJoomla": "5.9999.9999",
 	"allowDowngrades": "1",
 	"creationDate": "2021-03-28",
 	"licenseLong": "GNU General Public License version 3 or later; see LICENSE.txt.",
