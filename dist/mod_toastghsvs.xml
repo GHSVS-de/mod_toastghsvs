@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_TOASTGHSVS</name>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
+	<creationDate>2021-03-28</creationDate>
+	<copyright>(C) 2021, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt.</license>
+	<authorUrl>https://ghsvs.de</authorUrl>
+	<version>2023.10.22</version>
+	<description>MOD_TOASTGHSVS_XML_DESCRIPTION</description>
+
+	<updateservers><server type="extension" priority="1" name="MOD_TOASTGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/mod_toastghsvs-update.xml</server></updateservers>
+
+	<infourl>https://github.com/GHSVS-de/mod_toastghsvs/releases/tag/2023.10.22</infourl>
+
+	<scriptfile>installerScript.php</scriptfile>
+	<minimumPhp>7.3.0</minimumPhp>
+	<maximumPhp></maximumPhp>
+	<minimumJoomla>4.3.0</minimumJoomla>
+	<maximumJoomla>5.9999.9999</maximumJoomla>
+	<allowDowngrades>1</allowDowngrades>
+
+	<files>
+		<folder module="mod_toastghsvs">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<filename>installerScript.php</filename>
+		<filename>LICENSE.txt</filename>
+	</files>
+	<namespace path="src">GHSVS\Module\ToastGhsvs</namespace>
+	<config addfieldprefix="GHSVS\Module\ToastGhsvs\Site\Field">
+		<fieldset name="inhalt" label="Content">
+			<field name="content" type="textarea" filter="safehtml"
+				class="extended-width" label="Text (HTML und Sprachstrings erlaubt)" />
+		</fieldset><!--/inhalt-->
+
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="headline" type="text" filter="safehtml"
+					class="extended-width"
+					label="Titel/Überschrift der Meldung. Sprachstring erlaubt." />
+
+				<field name="toastClass" type="textarea" default="" filter="string"
+					validate="CssIdentifier"
+					label="MOD_TOASTGHSVS_TOASTCLASS"
+					description="MOD_TOASTGHSVS_TOASTCLASS_DESC" />
+
+				<field name="hideIntervalSpacer" type="note"
+				class="alert alert-info"
+				label="Erneut anzeigen nach x Stunden"
+				description="[hideInterval] Wenn ein Besucher die Meldung wegklickt, wird sie für diese Zeitdauer nicht erneut angezeigt. 0 = Immer anzeigen. Max. 2160 = 90 Tage"/>
+
+				<field type="number" name="hideInterval" min="0" max="2160" default="0"
+					label="Erneut anzeigen nach x Stunden"
+				/>
+
+				<field name="prepare_contentSpacer" type="note"
+					class="alert alert-info"
+					label="MOD_TOASTGHSVS_FIELD_PREPARE_CONTENT_LABEL"
+					description="JA bspw. dann, wenn der Inhalt Platzhalter enthält, die durch Plugins ersetzt werden sollen. Enthält der Inhalt eine Email, ist JA dringend empfohlen. Dadurch wird die Email 'gecloakt' (Schutz vor Spam-Bots)."/>
+
+				<field name="prepare_content" type="list" filter="integer"
+					label="MOD_TOASTGHSVS_FIELD_PREPARE_CONTENT_LABEL"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="forcePositionSpacer" type="note"
+					label="MOD_TOASTGHSVS_FIELD_FORCEPOSITION"
+					description="MOD_TOASTGHSVS_FIELD_FORCEPOSITION_DESC"
+					class="alert alert-info"/>
+
+				<field name="forcePosition" type="list" filter="string"
+					label="MOD_TOASTGHSVS_FIELD_FORCEPOSITION"
+					default="position-relative"
+					>
+					<option value="0">JNONE</option>
+					<option value="position-relative">position-relative</option>
+					<option value="position-absolute">position-absolute</option>
+					<!--<option value="position-static">position-static</option>
+					<option value="position-fixed">position-fixed</option>
+					<option value="position-sticky">position-sticky</option>-->
+				</field>
+
+				<field name="robotsHide" type="list" filter="integer"
+					label="MOD_TOASTGHSVS_FIELD_ROBOTSHIDE"
+					default="1"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="layout" type="modulelayout" validate="moduleLayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"/>
+
+				<field name="moduleclass_sfx" type="textarea" filter="string"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"/>
+
+				<field name="cache" type="list" default="1" filter="integer"
+					validate="options"
+					label="COM_MODULES_FIELD_CACHING_LABEL">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field name="cache_time" type="number" default="900" filter="integer"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL" />
+
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

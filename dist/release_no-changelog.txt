@@ -1,0 +1,27 @@
+2023.10.22
+
+Joomla site module mod_toastGhsvs 2023.10.22
+
+Checksum entities: `&lt;sha256&gt;2bc87494dce396f5251fe9ebb564336ac2ab09dd83dd5482b1d26a3dbcdc89bd&lt;/sha256&gt;`
+
+Joomla site module. Bootstrap 5 toast in module position. Hour intervall setting when to display again.
+
+### Joomla 4.3+, Joomla 5.
+
+### Download
+[mod_toastghsvs-2023.10.22.zip](https://github.com/GHSVS-de/mod_toastghsvs/raw/2023.10.22/dist/mod_toastghsvs-2023.10.22.zip)
+
+### Joomla-Target-Platform(s)
+4.[3456789], 5.&ast;
+
+### For the interested ones
+- [Compare releases 2022.07.20...2023.10.22](https://github.com/GHSVS-de/mod_toastghsvs/compare/2022.07.20...2023.10.22)
+- minimumJoomla: 4.3.0
+- maximumJoomla: 5.9999.9999
+- minimumPhp: 7.3.0
+- maximumPhp:
+- Checksum: `<sha256>2bc87494dce396f5251fe9ebb564336ac2ab09dd83dd5482b1d26a3dbcdc89bd</sha256>`
+- Readme: https://github.com/GHSVS-de/mod_toastghsvs#readme
+- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/mod_toastghsvs-update.xml
+- Last tests: PHP 8.2<br>Joomla 4.4<br>Joomla 5.0<br>Bootstrap 5.2<br>Bootstrap 5.3
+- Requires: Bootstrap 5 (Toast CSS, Toast JS)
