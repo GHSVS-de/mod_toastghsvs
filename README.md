@@ -2,11 +2,10 @@
 
 Joomla site module. Bootstrap 5 toast in module position. Hour intervall setting when to display again.
 
-Very lazy, rudimentary implementation.
-
-## Be aware
+## Be aware for versions lower than 2023.10.22
 - Doesn't use Web Asset Manager to load the necessary BS5-Javascript ([Toast Component](https://getbootstrap.com/docs/5.1/components/toasts/))
 - Toast CSS and Toast JS must be loaded already otherwise. Again: Bootstrap 5!
+  - Since version 2023.10.22: Loads Toast JS with WAM.
 - Maybe that will be changed if Joomla 3 has reached EOL.
 
 -----------------------------------------------------
