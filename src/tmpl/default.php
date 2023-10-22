@@ -1,17 +1,31 @@
 <?php
 defined('_JEXEC') or die;
+
 use Joomla\CMS\Factory;
 use Joomla\Input\Cookie;
 use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Language\Text;
 
-$position = $params->get('forcePosition', 'position-relative');
-$hideInterval = (int) $params->get('hideInterval', 0);
+/*
+From Dispatcher:
+$toastId String
+$forcePosition String
+$hideInterval Integer
+$cookieTimeSeconds Integer
+$headline String
+$toastClass String
+$content String
+$robotsHide Bool
+$moduleclass_sfx String
+$wam Joomla\CMS\WebAsset\WebAssetManager
+*/
 
-// 14 days 60 * 60 * 24 * 14
-// 14 stunden 60 * 60 * 14
-$cookieTimeSeconds = 60 * 60 * $hideInterval;
+if ($robotsHide === true)
+{
+	return;
+}
+
 $currentTime = time();
-$toastId = 'thisToast' . $module->id;
 $node = $toastId . 'Node';
 $session = Factory::getSession();
 $sessionData = (int) $session->get($node);
@@ -26,7 +40,7 @@ if ($cookieTimeSeconds > 0
 
 $timeToCookie = $currentTime + $cookieTimeSeconds;
 $session->set($node, $timeToCookie);
-$cookieOptions = array(
+$cookieOptions = [
 	'expires' => $timeToCookie,
 	// Wichtig! Damit Cookie sowohl unter /de/ als auch /en/ verfügbar.
 	'path' => '/',
@@ -39,40 +53,41 @@ $cookieOptions = array(
 	'httponly' => true,
 	'samesite' => 'strict',
 	'secure' => true
-);
+];
 
 $cookie->set($node,
 	1,
 	$cookieOptions
 );
+
+$wam->useScript('bootstrap.toast');
 ?>
-<div class="toast-container <?php echo $toastId; ?><?php echo $position ? ' ' . $position : ''; ?>">
-	<div id="<?php echo $toastId; ?>" role="status" class="toast"
+<div class="toast-container <?php echo $toastId . $forcePosition; ?>">
+	<div id="<?php echo $toastId; ?>" role="status" class="toast<?php echo $toastClass; ?>"
 		data-bs-autohide="false">
 		<div class="toast-header">
-			<strong class="me-auto"><?php echo $params->get('headline', ''); ?></strong>
-			<?php echo LayoutHelper::render('ghsvs.closeButtonTop',
-				array('options' => ['dismissType' => 'toast'])); ?>
+			<strong class="me-auto"><?php echo $headline; ?></strong>
+			<button type="button" class="btn-close" data-bs-dismiss="toast"
+				aria-label="<?php echo Text::_('JCLOSE'); ?>"></button>
 		</div>
 		<div class="toast-body">
-			<?php echo $module->content; ?>
+			<?php echo $content; ?>
 		</div>
 	</div>
 </div>
 <?php
-$doc = $app->getDocument();
 $js = <<< JS
 document.addEventListener("DOMContentLoaded", function() {
 var $toastId = new bootstrap.Toast("#$toastId");
 $toastId.show();
 });
 JS;
-$doc->addScriptDeclaration($js);
+$wam->addInlineScript($js);
 
-if ($position === 'position-relative')
+if (trim($forcePosition) === 'position-relative')
 {
 	$css = <<< CSS
 .toast-container.$toastId{z-index:1 !important}
 CSS;
-	$doc->addStyleDeclaration($css);
+	$wam->addInlineStyle($css);
 }
