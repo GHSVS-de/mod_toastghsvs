@@ -11,9 +11,7 @@
 
 	<updateservers><server type="extension" priority="1" name="{{nameUpper}}">{{xmlserver}}/{{name}}-update.xml</server></updateservers>
 
-	<changelogurl>{{xmlserver}}/{{name}}-changelog.xml</changelogurl>
-
-	<infourl>{{infourl}}?file={{name}}</infourl>
+	<infourl>{{infourl}}</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>{{minimumPhp}}</minimumPhp>
@@ -23,11 +21,12 @@
 	<allowDowngrades>{{allowDowngrades}}</allowDowngrades>
 
 	<files>
-		<filename module="{{name}}">{{name}}.php</filename>
+		<folder module="{{name}}">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
 		<filename>installerScript.php</filename>
 		<filename>LICENSE.txt</filename>
-		<folder>language</folder>
-		<folder>tmpl</folder>
 	</files>
 	{{namespace}}
 	<config{{addfieldprefix}}>
@@ -39,15 +38,13 @@
 		<fields name="params">
 			<fieldset name="advanced">
 				<field name="headline" type="text" filter="safehtml"
-					class="extended-width" label="Titel/Überschrift der Meldung" />
+					class="extended-width"
+					label="Titel/Überschrift der Meldung. Sprachstring erlaubt." />
 
-				<field name="farbe" type="list" filter="string"
-					label="Farbe der Meldung"
-					default=""
-					>
-					<option value="">neutral</option>
-					<option value="text-white bg-primary">JNO</option>
-				</field>
+				<field name="toastClass" type="textarea" default="" filter="string"
+					validate="CssIdentifier"
+					label="MOD_TOASTGHSVS_TOASTCLASS"
+					description="MOD_TOASTGHSVS_TOASTCLASS_DESC" />
 
 				<field name="hideIntervalSpacer" type="note"
 				class="alert alert-info"
