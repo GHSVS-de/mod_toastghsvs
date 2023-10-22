@@ -21,7 +21,9 @@ class mod_toastGhsvsInstallerScript extends InstallerScript
 	 * @var    array
 	 * @since  2.0
 	 */
-	protected $deleteFiles = [];
+	protected $deleteFiles = [
+		'/modules/mod_toastghsvs/mod_toastghsvs.php',
+	];
 
 	/**
 	 * A list of folders to be deleted with method removeFiles().
