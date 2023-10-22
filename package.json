@@ -67,7 +67,7 @@
 		"Toast"
 	],
 	"private": false,
-	"description": "Joomla site module. Bootstrap 5 toast in module position. Hour intervall setting when to display again.",
+	"description": "Joomla site module for displaying messages (Bootstrap 5 toasts). Display frequency (hour intervall) can be set (cookie-controlled) when to display again.",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
