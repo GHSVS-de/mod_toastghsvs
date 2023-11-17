@@ -4,6 +4,7 @@
 	"filename": "mod_toastghsvs",
 	"version": "2023.10.22",
 	"versionCompare": "2022.07.20",
+	"versionSub": "",
 	"update": {
 		"infourl": "https://github.com/GHSVS-de/mod_toastghsvs{{thisRelease}}",
 		"type": "module",
